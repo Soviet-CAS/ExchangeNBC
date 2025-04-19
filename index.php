@@ -48,4 +48,3 @@ function extractDate($str){
 	$date = $matches[0] ?? null;
 	return $date; // Output: 2025-04-21
 }
-?>
