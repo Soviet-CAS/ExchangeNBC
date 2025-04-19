@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fetch('index.php')
+          .then(response => response.json())
+          .then(data => {
+            console.log("PHP response:", data);
+            document.getElementById("result").innerText = 
+              `Currency: ${data.currency}, Rate: ${data.rate}`;
+          })
+          .catch(error => console.error('Error:', error));
+        </script>
+        
+        <div id="result"></div>
+        
+</body>
+</html>
