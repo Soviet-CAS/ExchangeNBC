@@ -59,11 +59,12 @@ function getNbcExchangeRate(): array
 
 function getAccessExchangeRate(): array
 {
+    $realtimeUrl = 'https://data.mef.gov.kh/api/v1/realtime-api/exchange-rate?currency_id=USD';
     $datasetUrl = 'https://data.mef.gov.kh/datasets/pd_66a0cd503e0bd300012638fb4';
     $datasetId = 'pd_66a0cd503e0bd300012638fb4';
 
-    // Try likely JSON APIs used by the portal and then fallback to HTML parsing.
     $candidateUrls = [
+        $realtimeUrl,
         "https://data.mef.gov.kh/api/v1/public/datasets/{$datasetId}",
         "https://data.mef.gov.kh/api/v1/datasets/{$datasetId}",
         "https://data.mef.gov.kh/api/v1/public/datasets/{$datasetId}/records",
@@ -81,7 +82,7 @@ function getAccessExchangeRate(): array
             return [
                 'event' => 'access_exchange_rate',
                 'source' => $url,
-                'dataset_url' => $datasetUrl,
+                'primary_source' => $realtimeUrl,
                 'data' => $parsed,
             ];
         }
@@ -89,8 +90,8 @@ function getAccessExchangeRate(): array
 
     return [
         'event' => 'access_exchange_rate',
-        'source' => $datasetUrl,
-        'error' => 'Unable to access exchange rate dataset. Verify source availability and network access.'
+        'source' => $realtimeUrl,
+        'error' => 'Unable to fetch access exchange rate data from MEF sources.'
     ];
 }
 
