@@ -14,7 +14,8 @@ GET /index.php?event=nbc_exchange_rate
 ```
 
 ### 2) Access exchange rate (new)
-Returns data from the MEF realtime exchange-rate API source (USD), with fallback to the published MEF dataset endpoints if needed:
+
+Returns data from the MEF realtime exchange-rate API source:
 `https://data.mef.gov.kh/api/v1/realtime-api/exchange-rate?currency_id=USD`
 
 ```bash
