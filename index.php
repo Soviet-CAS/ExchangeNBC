@@ -59,9 +59,9 @@ function getNbcExchangeRate(): array
 
 function getAccessExchangeRate(): array
 {
+
     $apiUrl = 'https://data.mef.gov.kh/api/v1/realtime-api/exchange-rate?currency_id=USD';
     $raw = fetchUrl($apiUrl);
-
     if ($raw !== null) {
         $parsed = parseExchangeRatePayload($raw, $apiUrl);
         if ($parsed !== null) {
